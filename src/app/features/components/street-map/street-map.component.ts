@@ -42,6 +42,11 @@ export class StreetMapComponent implements AfterViewInit {
   }
 
   private loadMap(): void {
+    let latLng: L.LatLngExpression;
+    const iconUrl: string = 'assets/images/marker-icon.png';
+    const iconWidth: number = 30;
+    const iconHeight: number = 50;
+
     this.streetMap = L.map('map').setView([0, 0], 1);
     L.tileLayer(this.tileServerUrl, {
       attribution: this.tileLayerAttribution,
@@ -49,10 +54,30 @@ export class StreetMapComponent implements AfterViewInit {
     }).addTo(this.streetMap);
 
     this.getCurrentPosition().subscribe((position: any) => {
-      this.streetMap.setView(
-        [position.latitude, position.longitude],
-        this.initialZoom
-      );
+      latLng = [position.latitude, position.longitude];
+      this.streetMap.setView(latLng, this.initialZoom);
+
+      const point = this.streetMap.latLngToContainerPoint([
+        position.latitude,
+        position.longitude,
+      ]);
+
+      // const newPoint = L.point([
+      //   point.x - (iconWidth / 2),
+      //   point.y - (iconHeight / 2),
+      // ]);
+      // const newLatLng = this.streetMap.containerPointToLatLng(newPoint);
+
+      const icon = L.icon({
+        iconUrl: iconUrl,
+        popupAnchor: [13, 0],
+        iconSize: [iconWidth, iconHeight],
+      });
+
+      const marker = L.marker(latLng, {
+        icon,
+      }).bindPopup('My location');
+      marker.addTo(this.streetMap);
     });
   }
 }
