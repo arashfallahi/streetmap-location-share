@@ -1,3 +1,182 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~normalize.css';
-@import '../node_modules/leaflet/dist/leaflet.css';
+@import "~normalize.css";
+@import "../node_modules/leaflet/dist/leaflet.css";
+
+.location-edit__simple-map-container {
+  border: 1px solid darkgrey;
+  height: 105px;
+  width: 280px;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.logo-container {
+  height: 75px;
+  width: 280px;
+  border: 1px solid darkgrey;
+  background-color: #efeaeabb;
+  border-radius: 0 0 3px 3px;
+}
+
+.info {
+  width: 280px;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.logo-container img {
+  width: 100%;
+  height: 100%;
+}
+#inputForm {
+  height: 600px;
+  width: 320px;
+  overflow-y: auto;
+  display: flex;
+  align-items: center;
+}
+
+form {
+  width: calc(100% - 40px);
+  height: 100%;
+  margin: 0px;
+  padding: 0;
+  border-radius: 8px;
+}
+
+h2 {
+  text-align: center;
+}
+
+input[type="text"],
+select {
+  border: none;
+  font-size: 14px;
+  height: auto;
+  margin: 0;
+  outline: 0;
+  padding: 7px;
+  width: calc(100% - 14px);
+  color: #000;
+  margin-bottom: 10px;
+  border-radius: 3px;
+  border: 1px solid darkgrey;
+}
+
+select {
+  padding: 5px;
+  height: 32px;
+  border-radius: 3px;
+  width: 100%;
+}
+
+button,
+button.confirm {
+  padding: 10px;
+  margin: 10px 10px 0;
+  color: #fff;
+  background-color: #4ba3c9;
+  font-size: 14px;
+  text-align: center;
+  font-style: normal;
+  border-radius: 5px;
+  width: 100px;
+  margin-bottom: 10px;
+  border: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button.attached-button {
+  border-radius: 3px 3px 0 0;
+  margin-bottom: 0;
+  margin-top: 0;
+  width: 100%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+button.attached-button:hover {
+  background-color: #156688;
+}
+
+button.confirm:hover {
+  background-color: #156688;
+}
+
+button:disabled {
+  background-color: #8a8d8d;
+  cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: #8a8d8d;
+  cursor: not-allowed;
+}
+
+button.close,
+button.cancel {
+  background-color: orange;
+}
+
+button.close:hover {
+  background-color: orangered;
+  cursor: pointer;
+}
+
+fieldset {
+  border: none;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+}
+
+label.light {
+  font-weight: 300;
+  display: inline;
+}
+
+.location-details {
+  width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+}
+
+span.title {
+  font-weight: bold;
+}
+
+.street-map {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.simple-street-map {
+  position: relative;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: auto;
+}
+
+.container__street-map {
+  height: 100vh;
+  width: 100%;
+}

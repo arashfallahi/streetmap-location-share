@@ -1,0 +1,89 @@
+<div id="inputForm" class="location-edit">
+  <form [formGroup]="locationInfoForm">
+    <h2>Share Location</h2>
+    <fieldset class="fieldset">
+      <label for="locationName">Location Name:</label>
+      <input
+        type="text"
+        id="locationName"
+        formControlName="locationName"
+        name="locationName"
+        [value]="componentInstanceData?.locationName"
+      />
+      <label>Location On the Map:</label>
+      <div class="location-edit__simple-map-container">
+        <app-street-map-simple
+          [defaultLatLng]="defaultLatLng"
+        ></app-street-map-simple>
+      </div>
+      <label for="locationType">Location Type:</label>
+      <select
+        id="locationType"
+        formControlName="locationType"
+        name="locationType"
+      >
+        <option
+          *ngFor="let item of possibleLocationTypeItems"
+          [ngValue]="item.value"
+        >
+          {{ item.value }}
+        </option>
+      </select>
+      <label for="logo">Logo:</label>
+      <button
+        type="button"
+        [disabled]="uploadInProgress || !chosenFile"
+        class="location-edit__button--attached attached-button"
+        (click)="uploadFile()"
+      >
+        {{ uploadProgressText == "" ? "Upload" : uploadProgressText }}
+      </button>
+      <div class="logo-container">
+        <ng-template [ngIf]="blobUrl">
+          <img [src]="blobUrl" />
+        </ng-template>
+      </div>
+      <input
+        type="file"
+        id="name"
+        name="logo"
+        accept="image/*"
+        (change)="getBlobUrl($event)"
+      />
+    </fieldset>
+    <ng-template
+      [ngIf]="
+        componentInstanceData?.logoUrl ||
+        (uploadedFileLink && !uploadInProgress)
+      "
+    >
+      <div class="info">
+        <strong
+          >Logo URL:
+          <a [href]="componentInstanceData?.logoUrl" target="_blank">{{
+            componentInstanceData?.logoUrl && !uploadedFileLink
+              ? componentInstanceData?.logoUrl
+              : uploadedFileLink
+          }}</a></strong
+        >
+        <br />
+        <span>Each file gets removed after download.</span>
+      </div>
+    </ng-template>
+    <button
+      type="location-edit__button--close button"
+      class="close"
+      (click)="closePopup()"
+    >
+      Cancel
+    </button>
+    <button
+      type="location-edit__button--confirm button"
+      class="confirm"
+      [disabled]="uploadInProgress || (chosenFile && !uploadedFileLink)"
+      (click)="saveData()"
+    >
+      Save
+    </button>
+  </form>
+</div>

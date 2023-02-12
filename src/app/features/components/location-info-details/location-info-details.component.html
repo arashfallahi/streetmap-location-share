@@ -1,0 +1,39 @@
+<div class="location-details">
+  <h2>Location Details</h2>
+
+  <p>
+    <span class="title">Location Name:</span>
+    {{
+      componentInstanceData?.locationName
+        ? componentInstanceData?.locationName
+        : noValueText
+    }}
+  </p>
+
+  <p>
+    <span class="title">Location (Lat, Lng):</span>
+    {{
+      componentInstanceData?.latLng
+        ? componentInstanceData?.latLng
+        : noValueText
+    }}
+  </p>
+
+  <p>
+    <span class="title">Location Type:</span>
+    {{
+      componentInstanceData?.locationType
+        ? componentInstanceData?.locationType
+        : noValueText
+    }}
+  </p>
+
+  <p>
+    <span class="title">Logo URL:</span>
+    {{
+      componentInstanceData?.logoUrl
+        ? componentInstanceData?.logoUrl
+        : noValueText
+    }}
+  </p>
+</div>

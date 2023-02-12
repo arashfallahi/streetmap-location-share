@@ -1,0 +1,19 @@
+<div class="location-info">
+  <ng-template [ngIf]="locationInfoMode != 'EDIT'">
+    <app-location-info-details
+      [componentInstanceData]="componentInstanceData"
+    ></app-location-info-details>
+
+  </ng-template>
+  <ng-template [ngIf]="locationInfoMode == 'EDIT'">
+    <app-location-info-edit
+      [componentInstanceData]="componentInstanceData"
+      (resetPopupContentMode)="locationInfoMode = $event"
+    ></app-location-info-edit>
+  </ng-template>
+
+  <div class="buttons-container" [ngStyle]="(locationInfoMode == 'EDIT') ? {'display': 'none'} : {'display': 'block'}">
+    <button type="button" class="location-info__button--confirm confirm" [disabled]="componentInstanceData?.id !== 0" (click)="(locationInfoMode = 'EDIT')">Edit</button>
+    <button type="button" class="location-info__button--close close" (click)="closePopup()">Close</button>
+  </div>
+</div>
